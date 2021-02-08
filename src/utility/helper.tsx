@@ -5,17 +5,17 @@ import {timeObject} from 'models';
 export const calcDuration = (
     start: string,
     end: string,
-    startPeriod: string,
-    endPeriod: string,
     rate: number,
 
 ): number => {
     //special case: works evening past midnight
-    let startHour: number = parseInt(start.substr(0,3),10);
+    let startHour: number = parseInt(start.substr(0,2),10);
     let startMin: number = parseInt(start.substr(3,5),10);
+    let startPeriod: string = start.substr(9,11);
 
-    let endHour: number = parseInt(end.substr(0,3),10);
+    let endHour: number = parseInt(end.substr(0,2),10);
     let endMin: number = parseInt(end.substr(3,5),10);
+    let endPeriod: string = end.substr(9,11);
 
     if(startPeriod=="pm"&&endPeriod=="am") {
         if(endHour<12) {

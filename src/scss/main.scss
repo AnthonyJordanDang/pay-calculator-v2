@@ -1,0 +1,45 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 500px;
+    padding-top: 5vh;
+    height: 100vh;
+    justify-content: flex-start;
+
+    .options {
+        display: flex;
+        margin: 1vh;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .list {
+        display:flex;
+        flex-direction: column;
+        margin: 1vh;
+
+        .--list-item {
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+                .--list-item-time {
+                    width: 20vh;
+
+                }
+            &:hover {
+                background-color: #f5f5f5;
+
+            }
+
+
+            .MuiFormControl-marginNormal {
+                margin-right: 4px;
+                margin-left: 4px;
+
+            }
+        }
+    }
+}
