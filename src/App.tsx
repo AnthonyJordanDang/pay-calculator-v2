@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./scss/main.scss";
-import "./App.css";
 import {
     timeObject,
     initTimeState,
@@ -34,6 +32,13 @@ import {
 } from "@material-ui/pickers";
 
 import Button from "@material-ui/core/Button";
+
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+import { Divider } from "@material-ui/core";
+
 const timeState = atom({
     key: "timeState",
     default: [initTimeState],
@@ -68,16 +73,26 @@ const timeStatsState = selector({
 
 function TotalPay() {
     const timeStats = useRecoilValue(timeStatsState);
-    return <p> Total: {timeStats.total} </p>;
+    return (
+        <h1 className="--title-amount" varian="h1">
+            {" "}
+            $ {timeStats.total.toFixed(2)}{" "}
+        </h1>
+    );
 }
 
 function ShiftList() {
     const shiftList = useRecoilValue(timeState);
 
     return (
-        <div>
+        <div className="list">
             {shiftList.map((shiftItem) => (
-                <ShiftListItem key={shiftItem.id} item={shiftItem} />
+                <div className="--list-row">
+                    <ShiftListItem key={shiftItem.id} item={shiftItem} />
+                    <div className="--list-item-divider">
+                        <Divider />
+                    </div>
+                </div>
             ))}
         </div>
     );
@@ -87,19 +102,39 @@ function TimeRate() {
     const [timeRateInput, setTimeRateInput] = useRecoilState(timeRateState);
     const setTimeRate = useSetRecoilState(timeRateState);
 
-    const editRate = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const new_rate: number = parseInt(e.target.value);
+    const editRate = (e: any) => {
+        console.log("this is the value of the rate " + e.target.value);
+        console.log("this is the current value of the rate " + timeRateInput);
+        let new_rate: number = parseInt(e.target.value);
+        if (isNaN(new_rate)) {
+            new_rate = 0;
+        }
+
         setTimeRate(new_rate);
     };
 
     return (
-        <div>
-            <input
-                type="number"
-                name="rate"
-                onChange={editRate}
-                value={timeRateInput}
-            ></input>
+        <div className="input-rate">
+            {isNaN(timeRateInput) ? (
+                <TextField
+                    error
+                    id="outlined-error"
+                    label="Please enter valid rate"
+                    defaultValue="0"
+                    onChange={editRate}
+                    value={timeRateInput}
+                    variant="outlined"
+                />
+            ) : (
+                <TextField
+                    id="filled-basic"
+                    label="$/hour"
+                    variant="filled"
+                    name="rate"
+                    onChange={editRate}
+                    value={timeRateInput}
+                />
+            )}
         </div>
     );
 }
@@ -123,11 +158,9 @@ function AddTime() {
     };
 
     return (
-        <div>
-            <Button variant="contained" color="primary" onClick={addTime}>
-                Add
-            </Button>
-        </div>
+        <Button variant="contained" color="primary" onClick={addTime}>
+            Add
+        </Button>
     );
 }
 
@@ -193,7 +226,12 @@ function ShiftListItem({ key, item }: ShiftListItemProps) {
                     />
                 </div>
             </MuiPickersUtilsProvider>
-            <button onClick={deleteShiftItem}>X</button>
+
+            <div className="--list-item-delete">
+                <IconButton onClick={deleteShiftItem}>
+                    <CloseIcon />
+                </IconButton>
+            </div>
         </div>
     );
 }
@@ -209,9 +247,7 @@ function App() {
                     <AddTime />
                     <TimeRate />
                 </div>
-                <div className="list">
-                    <ShiftList />
-                </div>
+                <ShiftList />
             </div>
         </RecoilRoot>
     );

@@ -1,44 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lekton&display=swap");
+
+$font-stack: "Montserrat", sans-serif;
+$font-text: "Lekton", sans-serif;
+
+$primary-color: #356859;
+$primary-color-normal: #37966f;
+$primary-color-light: #b9e4c9;
+$secondary-color: #fd5523;
+$secondary-color-light: #fffbe6;
+$secondary-color-normal: #f1f5df;
+$secondary-color-dark: #d9dbd0;
+
+body {
+    font-family: $font-stack;
+    background-color: $secondary-color-light;
+}
+
 #container {
     display: flex;
     flex-direction: column;
     margin: auto;
     width: 500px;
-    padding-top: 5vh;
     height: 100vh;
     justify-content: flex-start;
+
+    .input-rate {
+        width: 9vh;
+    }
+
+    .--title-amount {
+        font-size: 96px;
+        margin: auto;
+        padding-top: 2rem;
+        font-weight: bold;
+        color: $primary-color;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
 
     .options {
         display: flex;
         margin: 1vh;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
+
+        button.MuiButton-containedPrimary {
+            background-color: $primary-color;
+            font-family: $font-stack;
+        }
+        .input-rate {
+            .MuiFormControl-root.MuiTextField-root * {
+                background-color: $secondary-color-normal;
+                font-family: $font-stack;
+                color: $primary-color;
+
+
+                &::after {
+                    border-bottom: 2px solid $primary-color;
+
+                }
+            }
+
+        }
     }
     .list {
-        display:flex;
+        display: flex;
         flex-direction: column;
         margin: 1vh;
 
-        .--list-item {
-            display:flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: nowrap;
-            transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        .--list-row {
+            display: flex;
+            flex-direction: column;
+            .--list-item {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1)
+                    0ms;
                 .--list-item-time {
                     width: 20vh;
 
+                    svg.MuiSvgIcon-root {
+                        path {
+                            color: $primary-color;
+                            d: path(
+                                "M 11.99 2 C 6.47 2 2 6.48 2 12 s 4.47 10 9.99 10 C 17.52 22 22 17.52 22 12 S 17.52 2 11.99 2 Z M 12 20 c -4.42 0 -8 -3.58 -8 -8 s 3.58 -8 8 -8 s 8 3.58 8 8 s -3.58 8 -8 8 Z M 12.5 7 H 11 v 6 l 5.25 3.15 l 0.75 -1.23 l -4.5 -2.67 Z"
+                            );
+                        }
+                    }
                 }
-            &:hover {
-                background-color: #f5f5f5;
+                .--list-item-delete {
+                    svg.MuiSvgIcon-root {
+                        path {
+                            color: $primary-color;
+                            d: path(
+                                "M 19 6.41 L 17.59 5 L 12 10.59 L 6.41 5 L 5 6.41 L 10.59 12 L 5 17.59 L 6.41 19 L 12 13.41 L 17.59 19 L 19 17.59 L 13.41 12 Z"
+                            );
+                        }
+                    }
+                }
+                &:hover {
+                    background-color: $secondary-color-normal;
+                }
 
+                .MuiFormControl-marginNormal {
+                    margin-right: 4px;
+                    margin-left: 4px;
+                }
+
+                .MuiFormLabel-root {
+                    color: $primary-color;
+                    font-family: $font-text;
+                    font-weight: 500;
+                    font-size: 1rem;
+                }
+
+                .MuiInputBase-root {
+                    color: $primary-color;
+                    font-family: $font-text;
+                    font-weight: 600;
+                    font-size: 1rem;
+                }
+
+                .MuiInput-underline:after {
+                    border-bottom: 2px solid $primary-color;
+                }
+
+                .MuiInput-underline:before {
+                    border-bottom: 1px solid $primary-color-normal;
+                }
             }
+            .--list-item-divider {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
 
-
-            .MuiFormControl-marginNormal {
-                margin-right: 4px;
-                margin-left: 4px;
-
+                hr.MuiDivider-root {
+                    width: 95%;
+                    background-color: $secondary-color-normal;
+                }
             }
         }
     }

@@ -16,6 +16,10 @@ export const calcDuration = (
     let endHour: number = parseInt(end.substr(0,2),10);
     let endMin: number = parseInt(end.substr(3,5),10);
     let endPeriod: string = end.substr(9,11);
+    console.log(start);
+    console.log("this is the startPeriod " + startPeriod);
+
+    console.log("this is the endPeriod " + endPeriod);
 
     if(startPeriod=="pm"&&endPeriod=="am") {
         if(endHour<12) {
