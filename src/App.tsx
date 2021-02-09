@@ -74,7 +74,7 @@ const timeStatsState = selector({
 function TotalPay() {
     const timeStats = useRecoilValue(timeStatsState);
     return (
-        <h1 className="--title-amount" varian="h1">
+        <h1 className="--title-amount">
             {" "}
             $ {timeStats.total.toFixed(2)}{" "}
         </h1>
