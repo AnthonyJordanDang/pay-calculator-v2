@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/pay-calculator-v2/static/css/main.e0d9f925.chunk.css",
-    "main.js": "/pay-calculator-v2/static/js/main.c9633634.chunk.js",
-    "main.js.map": "/pay-calculator-v2/static/js/main.c9633634.chunk.js.map",
+    "main.css": "/pay-calculator-v2/static/css/main.6e7ff6ff.chunk.css",
+    "main.js": "/pay-calculator-v2/static/js/main.a35ad1ed.chunk.js",
+    "main.js.map": "/pay-calculator-v2/static/js/main.a35ad1ed.chunk.js.map",
     "runtime-main.js": "/pay-calculator-v2/static/js/runtime-main.26ce3460.js",
     "runtime-main.js.map": "/pay-calculator-v2/static/js/runtime-main.26ce3460.js.map",
     "static/js/2.1e777ae4.chunk.js": "/pay-calculator-v2/static/js/2.1e777ae4.chunk.js",
     "static/js/2.1e777ae4.chunk.js.map": "/pay-calculator-v2/static/js/2.1e777ae4.chunk.js.map",
     "index.html": "/pay-calculator-v2/index.html",
-    "static/css/main.e0d9f925.chunk.css.map": "/pay-calculator-v2/static/css/main.e0d9f925.chunk.css.map",
+    "static/css/main.6e7ff6ff.chunk.css.map": "/pay-calculator-v2/static/css/main.6e7ff6ff.chunk.css.map",
     "static/js/2.1e777ae4.chunk.js.LICENSE.txt": "/pay-calculator-v2/static/js/2.1e777ae4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.26ce3460.js",
     "static/js/2.1e777ae4.chunk.js",
-    "static/css/main.e0d9f925.chunk.css",
-    "static/js/main.c9633634.chunk.js"
+    "static/css/main.6e7ff6ff.chunk.css",
+    "static/js/main.a35ad1ed.chunk.js"
   ]
 }
