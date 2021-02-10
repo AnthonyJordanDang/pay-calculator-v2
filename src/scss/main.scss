@@ -24,6 +24,9 @@ body {
     width: 500px;
     height: 100vh;
     align-items: center;
+    overflow-y: auto;
+    padding-left: 25px;
+    padding-right: 25px;
 
     .input-rate {
         width: 9vh;
@@ -38,6 +41,8 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        flex-grow:1;
+        flex-shrink:1;
     }
 
     .options {
@@ -76,6 +81,8 @@ body {
         .--list-row {
             display: flex;
             flex-direction: column;
+            flex-grow:1;
+            flex-shrink:1;
             .--list-item {
                 width: 100%;
                 display: flex;
