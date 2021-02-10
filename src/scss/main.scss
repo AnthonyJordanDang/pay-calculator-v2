@@ -14,8 +14,8 @@ $secondary-color-dark: #d9dbd0;
 
 body {
     font-family: $font-stack;
-    background-color: $secondary-color-light;
 }
+
 
 #container {
     display: flex;
@@ -148,4 +148,27 @@ body {
             }
         }
     }
+}
+
+.MuiPickersToolbar-toolbar {
+    background-color:$primary-color !important;
+}
+.MuiButton-root {
+    font-family: $font-text !important;
+}
+
+.MuiPickersClock-pin{
+    background-color: $primary-color !important;
+}
+
+.MuiPickersClockPointer-pointer {
+    background-color: $primary-color !important;
+}
+.MuiPickersClockPointer-thumb {
+    background-color: $primary-color !important;
+    border: 14px solid $primary-color !important;
+}
+
+.MuiButton-textPrimary {
+    color: $primary-color !important;
 }
