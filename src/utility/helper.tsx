@@ -11,27 +11,14 @@ export const calcDuration = (
     //special case: works evening past midnight
     let startHour: number = parseInt(start.substr(0,2),10);
     let startMin: number = parseInt(start.substr(3,5),10);
-    let startPeriod: string = start.substr(9,11);
 
     let endHour: number = parseInt(end.substr(0,2),10);
     let endMin: number = parseInt(end.substr(3,5),10);
-    let endPeriod: string = end.substr(9,11);
     console.log(start);
-    console.log("this is the startPeriod " + startPeriod);
 
-    console.log("this is the endPeriod " + endPeriod);
-
-    if(startPeriod=="pm"&&endPeriod=="am") {
+    if(startHour>=12&&endHour<12) {
         if(endHour<12) {
-            endHour+=12;
-        }
-    }
-    else {
-        if(startPeriod=="pm") {
-            startHour+=12;
-        }
-        if(endPeriod=="pm") {
-            endHour+=12;
+            endHour+=24;
         }
     }
 
