@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import App from "./App";
 import "./scss/main.scss";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.render(
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-        <App />
+        <Router basename={process.env.PUBLIC_URL}>
+            <App />
+        </Router>
     </React.StrictMode>,
     document.getElementById("root")
 );
