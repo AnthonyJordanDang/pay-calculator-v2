@@ -8,8 +8,8 @@ export interface timeObject {
 
 export const initTimeState : timeObject = {
     id: uuidv4(),
-    startTime: new Date(),
-    endTime: new Date(),
+    startTime: new Date("October 13, 2014 12:00:00"),
+    endTime: new Date("October 13, 2014 12:00:00"),
 }
 
 export interface timeStatsObject {
