@@ -57,14 +57,42 @@ body {
             font-family: $font-stack;
         }
         .input-rate {
-            .MuiFormControl-root.MuiTextField-root * {
-                background-color: $secondary-color-normal;
-                font-family: $font-stack;
+            & .MuiFormControl-root {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
                 color: $primary-color;
 
-                &::after {
+                & .MuiInputBase-root {
+                    font-family: $font-stack;
+                    color: $primary-color;
+                    display:flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                }
+
+                & .MuiFilledInput-root {
+                    &:hover {
+                        background-color: $secondary-color-dark;
+                    }
+                    &.Mui-focused {
+                        background-color: $secondary-color-normal;
+                    }
+                    background-color: $secondary-color-normal;
+                }
+                & .MuiFilledInput-underline:before {
+                    border-bottom: 1px solid $primary-color;
+                }
+                & .MuiFilledInput-underline:after {
                     border-bottom: 2px solid $primary-color;
                 }
+            }
+            & .MuiFormLabel-root {
+                display:flex;
+                flex-direction: column;
+                align-items: flex-end;
+                font-family: $font-stack;
+                color: $primary-color;
             }
         }
     }
@@ -87,11 +115,11 @@ body {
                 transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1)
                     0ms;
                 .--list-item-times {
-                    display:flex;
-                    flex-direction:row;
-                    flex-wrap:nowrap;
-                    width:100%;
-                    justify-content: space-between; 
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    width: 100%;
+                    justify-content: space-between;
 
                     .--list-item-time {
                         width: 45%;

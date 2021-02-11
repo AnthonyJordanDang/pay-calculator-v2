@@ -5,7 +5,7 @@ import {timeObject} from 'models';
 export const calcDuration = (
     start: string,
     end: string,
-    rate: number,
+    rate: string,
 
 ): number => {
     //special case: works evening past midnight
@@ -22,11 +22,16 @@ export const calcDuration = (
         }
     }
 
+    let rate_num: number = Number(parseFloat(rate).toFixed(2));
+    if(isNaN(rate_num)) {
+        rate_num=0;
+    }
+
     let startInMinutes: number = (startHour*60)+startMin;
     let endInMinutes: number = (endHour*60)+endMin;
 
     let duration: number = (endInMinutes-startInMinutes)/60;
-    let cost: number = Number((duration*rate).toFixed(2));
+    let cost: number = Number((duration*rate_num).toFixed(2));
     return cost;
 }
 

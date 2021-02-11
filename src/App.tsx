@@ -46,7 +46,7 @@ const timeState = atom({
 
 const timeRateState = atom({
     key: "timeRateState",
-    default: 14,
+    default: "14",
 });
 
 const timeStatsState = selector({
@@ -73,12 +73,7 @@ const timeStatsState = selector({
 
 function TotalPay() {
     const timeStats = useRecoilValue(timeStatsState);
-    return (
-        <h1 className="--title-amount">
-            {" "}
-            $ {timeStats.total.toFixed(2)}{" "}
-        </h1>
-    );
+    return <h1 className="--title-amount"> $ {timeStats.total.toFixed(2)} </h1>;
 }
 
 function ShiftList() {
@@ -101,28 +96,43 @@ function ShiftList() {
 function TimeRate() {
     const [timeRateInput, setTimeRateInput] = useRecoilState(timeRateState);
     const setTimeRate = useSetRecoilState(timeRateState);
+    let invalid: boolean = false;
 
     const editRate = (e: any) => {
-        console.log("this is the value of the rate " + e.target.value);
-        console.log("this is the current value of the rate " + timeRateInput);
-        let new_rate: number = parseInt(e.target.value);
-        if (isNaN(new_rate)) {
-            new_rate = 0;
+
+        let new_rate : string = e.target.value;
+
+        if(isNaN(parseFloat(e.target.value))) {
+            invalid = true;
+            console.log("invalid input");
         }
 
         setTimeRate(new_rate);
+
+
+
+
+        console.log("this is the value of the rate " + e.target.value);
+        console.log("this is the current value of the state " + timeRateInput);
+
+        //let new_rate: number = parseInt(e.target.value);
+        //if (isNaN(new_rate)) {
+        //    new_rate = 0;
+        //}
+
+        //setTimeRate(new_rate);
     };
 
     return (
         <div className="input-rate">
-            {isNaN(timeRateInput) ? (
+            {invalid ? (
                 <TextField
                     error
                     id="outlined-error"
                     label="Please enter valid rate"
-                    defaultValue="0"
+                    defaultValue=""
                     onChange={editRate}
-                    value={timeRateInput}
+                    value=""
                     variant="outlined"
                 />
             ) : (
@@ -195,35 +205,37 @@ function ShiftListItem({ key, item }: ShiftListItemProps) {
     return (
         <div className="--list-item">
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <div className="--list-item-time">
-                    <KeyboardTimePicker
-                        margin="normal"
-                        id="time-picker"
-                        label="Start Time"
-                        value={item.startTime}
-                        onChange={(event) =>
-                            editShiftItemTime("startTime", event)
-                        }
-                        KeyboardButtonProps={{
-                            "aria-label": "change time",
-                        }}
-                    />
-                </div>
+                <div className="--list-item-times">
+                    <div className="--list-item-time">
+                        <KeyboardTimePicker
+                            margin="normal"
+                            id="time-picker"
+                            label="Start Time"
+                            value={item.startTime}
+                            onChange={(event) =>
+                                editShiftItemTime("startTime", event)
+                            }
+                            KeyboardButtonProps={{
+                                "aria-label": "change time",
+                            }}
+                        />
+                    </div>
 
-                <div className="--list-item-time">
-                    <KeyboardTimePicker
-                        margin="normal"
-                        id="time-picker"
-                        name="endTime"
-                        label="End Time"
-                        value={item.endTime}
-                        onChange={(event) =>
-                            editShiftItemTime("endTime", event)
-                        }
-                        KeyboardButtonProps={{
-                            "aria-label": "change time",
-                        }}
-                    />
+                    <div className="--list-item-time">
+                        <KeyboardTimePicker
+                            margin="normal"
+                            id="time-picker"
+                            name="endTime"
+                            label="End Time"
+                            value={item.endTime}
+                            onChange={(event) =>
+                                editShiftItemTime("endTime", event)
+                            }
+                            KeyboardButtonProps={{
+                                "aria-label": "change time",
+                            }}
+                        />
+                    </div>
                 </div>
             </MuiPickersUtilsProvider>
 
