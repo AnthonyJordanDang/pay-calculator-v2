@@ -192,11 +192,24 @@ body {
     }
 }
 
+.MuiDialog-root {
+    & .MuiDialogActions-root .MuiButton-root {
+        font-family: $font-stack;
+    }
+    & .MuiButton-root .MuiTypography-h2 {
+        font-family: $font-stack;
+    }
+
+    & .MuiTypography-subtitle1 {
+        font-family: $font-stack;
+    }
+    & .MuiTypography-body1 {
+        font-family: $font-stack;
+    }
+}
+
 .MuiPickersToolbar-toolbar {
     background-color: $primary-color !important;
-}
-.MuiButton-root {
-    font-family: $font-text !important;
 }
 
 .MuiPickersClock-pin {
